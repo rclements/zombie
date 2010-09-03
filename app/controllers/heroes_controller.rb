@@ -13,6 +13,21 @@ class HeroesController < ApplicationController
     @hero = Hero.find(params[:id])
   end
 
+  def edit
+    @hero = Hero.find(params[:id])
+  end
+
+  def update
+    @hero = Hero.find(params[:id])
+    if @hero.update_attributes(params[:hero])
+      flash[:notice] = "The hero was successfully edited."
+      redirect_to :action => 'show'
+    else
+      flash.now[:notice] = "There was a problem updating the hero."
+      render :action => 'edit'
+    end
+  end
+
   def create
     @hero = Hero.new(params[:hero])
     if @hero.create

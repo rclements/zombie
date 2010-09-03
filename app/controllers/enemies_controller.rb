@@ -12,6 +12,21 @@ class EnemiesController < ApplicationController
     @enemy = Enemy.find(params[:id])
   end
 
+  def edit
+    @enemy = Enemy.find(params[:id])
+  end
+
+  def update
+    @enemy = Enemy.find(params[:id])
+    if @enemy.update_attributes(params[:enemy])
+      flash[:notice] = "The enemy was successfully edited."
+      redirect_to :action => 'show'
+    else
+      flash.now[:notice] = "There was a problem updating the enemy."
+      render :action => 'edit'
+    end
+  end
+
   def create
     @enemy = Enemy.new(params[:enemy])
     if @enemy.create

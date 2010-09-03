@@ -1,13 +1,11 @@
-Zombie::Application.routes.draw do |map|
-  map.root :controller => 'pages', :action => 'home'
+Zombie::Application.routes.draw do
+  root :controller => 'pages', :action => 'home'
 
-  map.resources :worlds
-  map.resources :locations
-  map.resources :heroes
-  map.resources :enemies
-  map.resources :weapons
-  map.resources :perks
+  resources :worlds
+  resources :locations
+  resources :heroes
+  resources :enemies
+  resources :weapons
+  resources :perks
 
-  map.connect ':controller/:action/:id'
-  map.connect ':controller/:action/:id.:format'
 end
