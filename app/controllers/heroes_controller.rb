@@ -30,9 +30,9 @@ class HeroesController < ApplicationController
 
   def create
     @hero = Hero.new(params[:hero])
-    if @hero.create
+    if @hero.save
       flash[:notice] = 'The hero is ready for battle'
-      redirect_to '/'
+      redirect_to hero_path
     else
       flash[:notice] = 'There was a problem creating a hero'
       render :action => 'new'
@@ -50,5 +50,10 @@ class HeroesController < ApplicationController
     end
   end
 
+  def attack
+  end
+
+  def defend
+  end
 
 end

@@ -29,7 +29,7 @@ class EnemiesController < ApplicationController
 
   def create
     @enemy = Enemy.new(params[:enemy])
-    if @enemy.create
+    if @enemy.save
       flash[:notice] = 'The enemy was created successfully.'
       redirect_to enemies_path
     else 
